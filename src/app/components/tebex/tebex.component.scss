@@ -15,14 +15,35 @@
     grid-template-columns: repeat(3,1fr);
     height: 60px;
 
+    .close-btn {
+      color: white;
+      position: absolute;
+      font-size: 1.4rem;
+      right: 20px;
+      top: 30px;
+      cursor: pointer;
+    }
+
     .header-tebex-boutique-name {
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 15px;
       h1 {
         font-family: "Poppins";
         color: white;
-        font-weight: 600;
+        font-weight: 900;
+        font-size: 1rem;
+      }
+
+      p {
+        color: white;
+        font-family: "Poppins";
+
+        span {
+          color: #05d966;
+          font-family: "Poppins";
+        }
       }
     }
 

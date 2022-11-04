@@ -2,7 +2,8 @@
   <tebex-notify></tebex-notify>
   <header class="header-tebex-boutique">
     <div class="header-tebex-boutique-name">
-      <h1>Jason Matel</h1>
+      <h1>{{tebexService.userName}}</h1>
+      <p>{{tebexService.coin}} <span>coin</span></p>
     </div>
     <div class="header-tebex-boutique-search">
       <input type="search" placeholder="Rechercher" [(ngModel)]="tebexService.searchFilter">
@@ -13,6 +14,7 @@
         <li><a [routerLink]="[{outlets:{tebex:['weapons']}}]" routerLinkActive="active">Weapons</a></li>
       </ul>
     </div>
+    <i class="fa-sharp fa-solid fa-xmark close-btn" (click)="close()"></i>
   </header>
   <div class="bag-tebex" *ngIf="tebexService.getBag.length > 0">
     <div class="bag-header">

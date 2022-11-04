@@ -22,6 +22,12 @@ export class TebexService {
 
   private _bag : any = []
 
+  private _coin : number = 0
+
+  private _userWeapons = []
+
+  private _userName : string = ""
+
   private _weaponList : Weapon[] = [
     {name:'Pistolet',model:'weapon_pistol',price:100,image:'./assets/tebex/weapons/weapon_pistol.png',type:"weapon"},
     {name:'Pistolet 50',model:'weapon_pistol50',price:150,image:'./assets/tebex/weapons/weapon_pistol50.png',type:"weapon"},
@@ -41,6 +47,31 @@ export class TebexService {
     return of(this._carList);
   }
 
+  public get coin() : number {
+    return this._coin
+  }
+
+
+  public set coin(coin : number) {
+    this._coin = coin
+  }
+
+  public get userName() {
+    return this._userName
+  }
+
+  public set userName(name :string) {
+    this._userName = name
+  }
+
+  public get userWeapons() {
+    return this._userWeapons
+  }
+
+  public set userWeapons(userWeapons) {
+    this._userWeapons = userWeapons
+  }
+
 
 
   public get weaponList() : Observable<Weapon[]> {
@@ -56,7 +87,6 @@ export class TebexService {
     if (this.messageNotify== undefined) {
       this._messageNotify = value;
       setTimeout(() => {
-        console.log("remise a 0")
         this._messageNotify = undefined
       },this._messageNotify?.time ? this._messageNotify.time : 2000)
     }
@@ -71,13 +101,31 @@ export class TebexService {
     this._bag = bag
   }
 
-  public addItemToBag(item: Weapon | Car) : void {
-    const itemSearch = this.getBag.find(it => it.model == item.model)
-    if (!itemSearch) {
-     return this._bag.push(item)
+  public addItemToBag(item: Weapon | Car) : any {
+
+    var total : number = 0
+    this.getBag.forEach((it : Weapon | Car) => {
+      total += it.price
+    })
+
+    if (this.coin - (total + item.price)  < 0) {
+      return this.messageNotify = {type:'error',message:"Vous n'avez plus assez de fond",time:2000}
     }
-    this.messageNotify = {type:'error',message:"Vous ne pouvez prendre qu'un seul item du meme type",time:2000}
+
+    const userHas = this.userWeapons.find((it:any) => it.model.toLowerCase() == item.model)
+    const itemSearch = this.getBag.find(it => it.model == item.model)
+
+    if (userHas) {
+       this.messageNotify = {type:'error',message:"Vous posséder deja cette armes",time:2000}
+    }
+
+    if (!itemSearch && !userHas) {
+      this._bag.push(item)
+    }else {
+      this.messageNotify = {type:'error',message:"Vous ne pouvez prendre qu'un seul item du meme type",time:2000}
+    }
   }
+
 
 
   public getTotal() : number {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TebexService} from "../../service/tebex.service";
 import {Router} from "@angular/router";
+import {NuiServiceService} from "../../service/nui-service.service";
 
 @Component({
   selector: 'app-tebex',
@@ -9,10 +10,14 @@ import {Router} from "@angular/router";
 })
 export class TebexComponent implements OnInit {
 
-  constructor(public tebexService: TebexService,private router : Router) { }
+  constructor(public tebexService: TebexService,private nuiService:NuiServiceService,private router : Router) { }
 
   ngOnInit(): void {
     this.router.navigate([{outlets: {tebex: 'cars'}}])
+  }
+
+  close() {
+    this.nuiService.tebex = false
   }
 
 
