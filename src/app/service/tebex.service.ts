@@ -3,6 +3,7 @@ import {Weapon} from "../interfaces/tebex/weapon";
 import {Observable, of} from "rxjs";
 import {Notify} from "../interfaces/tebex/notify";
 import {Car} from "../interfaces/tebex/car";
+import {HttpClient} from "@angular/common/http";
 
 
 
@@ -14,7 +15,7 @@ import {Car} from "../interfaces/tebex/car";
 export class TebexService {
 
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   searchFilter : string = ""
 
@@ -24,17 +25,17 @@ export class TebexService {
 
   private _coin : number = 0
 
-  private _userWeapons = []
+  private _userWeapons : any = []
 
   private _userName : string = ""
 
   private _weaponList : Weapon[] = [
     {name:'Pistolet',model:'weapon_pistol',price:100,image:'./assets/tebex/weapons/weapon_pistol.png',type:"weapon"},
     {name:'Pistolet 50',model:'weapon_pistol50',price:150,image:'./assets/tebex/weapons/weapon_pistol50.png',type:"weapon"},
-    {name:'Couteau',model:'weapon_knive',price:50,image:'./assets/tebex/weapons/weapon_knive.png',type:"weapon"},
-    {name:'smg',model:'weapon_smg',price:50,image:'./assets/tebex/weapons/weapon_smg.png',type:"weapon"},
-    {name:'tazer',model:'weapon_stungun_mp',price:50,image:'./assets/tebex/weapons/weapon_stungun_mp.png',type:"weapon"},
-    {name:'revolver',model:'weapon_revolver',price:50,image:'./assets/tebex/weapons/weapon_revolver.png',type:"weapon"},
+    {name:'Couteau',model:'weapon_knife',price:50,image:'./assets/tebex/weapons/weapon_knife.png',type:"weapon"},
+    {name:'Smg',model:'weapon_smg',price:50,image:'./assets/tebex/weapons/weapon_smg.png',type:"weapon"},
+    {name:'Tazer',model:'weapon_stungun',price:50,image:'./assets/tebex/weapons/weapon_stungun.png',type:"weapon"},
+    {name:'Revolver',model:'weapon_revolver',price:50,image:'./assets/tebex/weapons/weapon_revolver.png',type:"weapon"},
   ]
 
   private _carList : Car[] = [
@@ -139,6 +140,26 @@ export class TebexService {
 
   public removeFromBag(item : Weapon) {
     this.setBag = this.getBag.filter(it => it.model != item.model)
+  }
+
+  public buyBag() {
+    this.http.post("https://blackcity/boutique_buy",{
+      bag:this.getBag
+    }).subscribe({
+      next:(data) => {
+        var total = 0
+        this.messageNotify = {type:"success",message:"Vous avez recu vos achat",time:3000}
+        this.getBag.forEach(item => {
+          total += item.price
+        })
+        this.coin -= total
+        this.setBag = []
+        this.userWeapons = data
+      },
+      error:(err) => {
+        console.log(err)
+      }
+    })
   }
 
 

@@ -11,6 +11,7 @@ import { WeaponsViewComponent } from './components/tebex/weapons-view/weapons-vi
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {FormsModule} from "@angular/forms";
 import { NotifyComponent } from './components/tebex/notify/notify.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NotifyComponent } from './components/tebex/notify/notify.component';
     AppRoutingModule,
     RouterModule.forRoot(ROUTES),
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,5 +20,9 @@ export class TebexComponent implements OnInit {
     this.nuiService.tebex = false
   }
 
+  buyBag() {
+    this.tebexService.buyBag()
+  }
+
 
 }

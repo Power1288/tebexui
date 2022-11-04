@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {TebexService} from "./tebex.service";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import {TebexService} from "./tebex.service";
 export class NuiServiceService {
 
   private _tebex : boolean = false
-  constructor(private tebexService:TebexService) {
+  constructor(private tebexService:TebexService,private http:HttpClient) {
     this.loadNui()
   }
 
@@ -34,6 +35,17 @@ export class NuiServiceService {
 
   set tebex(value: boolean) {
     this._tebex = value;
+    if (!value) {
+      console.log("Close")
+      this.http.post("https://blackcity/boutique_close",{}).subscribe({
+        next:() => {
+
+        },
+        error:() => {
+
+        }
+      })
+    }
   }
 
 

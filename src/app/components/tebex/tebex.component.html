@@ -10,15 +10,15 @@
     </div>
     <div class="header-tebex-boutique-nav">
       <ul>
-        <li><a [routerLink]="[{outlets:{tebex:['cars']}}]" routerLinkActive="active">Cars</a></li>
-        <li><a [routerLink]="[{outlets:{tebex:['weapons']}}]" routerLinkActive="active">Weapons</a></li>
+        <li><a [routerLink]="[{outlets:{tebex:['cars']}}]" routerLinkActive="active">Voitures</a></li>
+        <li><a [routerLink]="[{outlets:{tebex:['weapons']}}]" routerLinkActive="active">Armes</a></li>
       </ul>
     </div>
     <i class="fa-sharp fa-solid fa-xmark close-btn" (click)="close()"></i>
   </header>
   <div class="bag-tebex" *ngIf="tebexService.getBag.length > 0">
     <div class="bag-header">
-      <h1>basket</h1>
+      <h1>Panier</h1>
     </div>
     <div class="bag-content">
       <div class="bag-item" *ngFor="let item of tebexService.getBag">
@@ -40,7 +40,7 @@
         <p>{{tebexService.getTotal()}} <span>coin</span></p>
       </div>
       <div class="bottom-bag-action">
-        <button>Comfirmer</button>
+        <button (click)="buyBag()">Comfirmer</button>
       </div>
     </div>
   </div>
