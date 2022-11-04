@@ -1,0 +1,88 @@
+
+
+  .tebex-car-view{
+    height: calc(100% - 70px);
+    max-height: calc(100% - 70px);
+    max-width: 75%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+    overflow-y: auto;
+    gap: 10px;
+    margin: 0 auto;
+
+
+
+    .tebex-car-item {
+      background: #191919;
+      display: grid;
+      grid-template-rows: 60% 40%;
+      padding: 10px;
+      border-radius: 9px;
+      max-height: 100%;
+      max-width: 100%;
+
+      @media screen and (max-width: 1280px) {
+        grid-template-rows: 40% 60%;
+      }
+
+      .tebex-car-item-top {
+        justify-self: center;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 50%;
+        }
+      }
+      .tebex-car-item-bottom {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        padding: 10px;
+        .tebex-car-item-bottom-info{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 10px;
+
+          .coin {
+            color: #05d966;
+            font-family: "Poppins";
+          }
+          p {
+            color: white;
+            font-size: 1.2rem;
+            font-family: "Poppins";
+            font-weight: 700;
+            @media screen and (max-width: 1280px) {
+              font-size: 0.8rem;
+            }
+          }
+        }
+
+        .tebex-car-item-bottom-action {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          button {
+            height: 30px;
+            width: min-content;
+            border-radius: 9px;
+            background-color: #05d966;
+            color: white;
+            cursor: pointer;
+            padding: 0 15px;
+            font-family: "Poppins";
+            transition: all 0.2s ease-in;
+            border: none;
+            &:hover {
+              transform: scale(1.02);
+            }
+          }
+        }
+      }
+    }
+  }
+

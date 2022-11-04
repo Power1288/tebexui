@@ -1,0 +1,17 @@
+<div class="tebex-car-view">
+  <div class="tebex-car-item" *ngFor="let car of carList | filter:tebexService.searchFilter">
+    <div class="tebex-car-item-top">
+      <img [src]="car.image" alt="">
+    </div>
+    <div class="tebex-car-item-bottom">
+
+      <div class="tebex-car-item-bottom-info">
+        <p>{{car.name.substring(0,10)}}</p>
+        <p>{{car.price}} <span class="coin">coin</span></p>
+      </div>
+      <div class="tebex-car-item-bottom-action">
+        <button (click)="addCar(car)">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>

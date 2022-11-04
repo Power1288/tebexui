@@ -1,0 +1,46 @@
+<div class="tebex-boutique">
+  <tebex-notify></tebex-notify>
+  <header class="header-tebex-boutique">
+    <div class="header-tebex-boutique-name">
+      <h1>Jason Matel</h1>
+    </div>
+    <div class="header-tebex-boutique-search">
+      <input type="search" placeholder="Rechercher" [(ngModel)]="tebexService.searchFilter">
+    </div>
+    <div class="header-tebex-boutique-nav">
+      <ul>
+        <li><a [routerLink]="[{outlets:{tebex:['cars']}}]" routerLinkActive="active">Cars</a></li>
+        <li><a [routerLink]="[{outlets:{tebex:['weapons']}}]" routerLinkActive="active">Weapons</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="bag-tebex" *ngIf="tebexService.getBag.length > 0">
+    <div class="bag-header">
+      <h1>basket</h1>
+    </div>
+    <div class="bag-content">
+      <div class="bag-item" *ngFor="let item of tebexService.getBag">
+        <div class="left-bag-item">
+          <img [src]="item.image" alt="">
+        </div>
+        <div class="center-bag-item">
+          <h2>{{item.name.substring(0,4)}}</h2>
+          <p>{{item.price}} <span>coin</span></p>
+        </div>
+        <div class="right-bag-part">
+          <i class="fa-solid fa-trash" (click)="tebexService.removeFromBag(item)"></i>
+        </div>
+      </div>
+    </div>
+    <div class="bag-action">
+      <div class="top-bag-action">
+        <h2>Total : </h2>
+        <p>{{tebexService.getTotal()}} <span>coin</span></p>
+      </div>
+      <div class="bottom-bag-action">
+        <button>Comfirmer</button>
+      </div>
+    </div>
+  </div>
+  <router-outlet name="tebex"></router-outlet>
+</div>

@@ -1,0 +1,205 @@
+.tebex-boutique {
+  background: #111111;
+  height: 70vh;
+  width: 70vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  border-radius: 9px;
+  z-index: 9999;
+
+  .header-tebex-boutique {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    height: 60px;
+
+    .header-tebex-boutique-name {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        font-family: "Poppins";
+        color: white;
+        font-weight: 600;
+      }
+    }
+
+    .header-tebex-boutique-search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      input {
+        width: 70%;
+        height: 40%;
+        border-radius: 9px;
+        border: none;
+        outline: none;
+        padding: 0 10px;
+        font-family: "Poppins";
+        background: #191919;
+        color: white;
+
+        &::placeholder {
+          color: white;
+        }
+      }
+    }
+
+    .header-tebex-boutique-nav {
+      display: flex;
+      align-items: center;
+      justify-self: center;
+
+      ul {
+        display: flex;
+        gap: 15px;
+
+        li {
+          a {
+            color: #5a5a5d;
+            font-family: "Poppins";
+
+            &.active {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+
+  }
+  .bag-tebex {
+    background: #151515;
+    height: calc(100% - 70px);
+    width: 20%;
+    float: right;
+    border-radius: 9px;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: 10% 70% 20%;
+    gap: 5px;
+    h1 {
+      color: white;
+      font-size: 1rem;
+      font-family: "Poppins";
+    }
+
+    .bag-action {
+      .top-bag-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+          color: white;
+          font-family: "Poppins";
+
+          @media screen and (max-width: 1280px){
+            font-size: 0.8rem;
+          }
+        }
+
+        p {
+          color: white;
+          font-family: "Poppins";
+          @media screen and (max-width: 1280px){
+            font-size: 0.8rem;
+          }
+          span {
+            color: #05d966;
+          }
+        }
+
+      }
+      .bottom-bag-action {
+        button {
+          background-color: #05d966;
+          padding: 10px 20px;
+          color: white;
+          width: 100%;
+          border-radius: 9px;
+          font-size: 1rem;
+          cursor: pointer;
+          font-family: "Poppins";
+          font-weight: 700;
+          transition: all 0.2s ease-in;
+          border: none;
+
+          @media screen and (max-width: 1280px){
+            transform: scaleY(0.7);
+            font-weight: 500;
+          }
+          &:hover {
+            transform: scale(1.02);
+          }
+        }
+      }
+    }
+
+    .bag-content {
+      height: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 5px 0;
+      gap: 15px;
+      .bag-item {
+        display: grid;
+        grid-template-columns: 30% 50% 20%;
+        gap: 5px;
+        background-color: #191919;
+        padding: 10px;
+        min-height: 60px;
+        border-radius: 9px;
+
+        @media screen and (max-width: 1280px){
+          grid-template-columns: 30% 40% 30%;
+        }
+
+        .left-bag-item {
+          align-self: center;
+          img {
+            width: 100%;
+          }
+        }
+        .center-bag-item {
+          align-self: center;
+          h2 {
+            color: white;
+            font-size: 1rem;
+            font-family: "Poppins";
+          }
+          p {
+            color: white;
+            font-family: "Poppins";
+            span {
+              color: #05d966;
+            }
+
+            @media screen and (max-width: 1280px){
+              display: flex;
+              gap: 5px;
+            }
+          }
+        }
+
+        .right-bag-part{
+          align-self: center;
+          justify-self: center;
+          i {
+            color: #05d966;
+            cursor: pointer;
+            transition: all 0.2s ease-in;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

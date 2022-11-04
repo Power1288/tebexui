@@ -1,0 +1,17 @@
+<div class="tebex-weapon-view">
+  <div class="tebex-weapon-item" *ngFor="let weapon of weaponList | filter:tebexService.searchFilter">
+    <div class="tebex-weapon-item-top">
+      <img [src]="weapon.image" alt="">
+    </div>
+    <div class="tebex-weapon-item-bottom">
+
+      <div class="tebex-weapon-item-bottom-info">
+        <p>{{weapon.name}}</p>
+        <p>{{weapon.price}} <span class="coin">coin</span></p>
+      </div>
+        <div class="tebex-weapon-item-bottom-action">
+          <button (click)="addWeapon(weapon)">Ajouter</button>
+        </div>
+    </div>
+  </div>
+</div>

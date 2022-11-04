@@ -1,0 +1,44 @@
+.tebex-notify{
+  position: absolute;
+  left: 50%;
+  top: -10%;
+  transform: translate(-50%);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 9px;
+  width: max-content;
+  animation:showNotify 0.3s ease-in ;
+
+  &.info {
+    background-color: #ffbe76;
+  }
+  &.success {
+    background-color: #05d966;
+  }
+
+  &.error {
+    background-color: #eb4d4b;
+  }
+  i {
+    font-size: 1.2rem;
+    color: white;
+  }
+  p {
+    font-family: "poppins";
+    font-weight: 700;
+    color: white;
+  }
+}
+
+@keyframes showNotify {
+  from {
+    opacity: 0;
+    top: -150%;
+  }
+  to {
+    opacity: 1;
+    top: -10%;
+  }
+}

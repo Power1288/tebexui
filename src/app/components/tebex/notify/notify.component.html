@@ -1,0 +1,6 @@
+<div class="tebex-notify" *ngIf="tebexService.messageNotify" [ngClass]="tebexService.messageNotify.type">
+  <i *ngIf="tebexService.messageNotify.type== 'info'" class="fa-solid fa-circle-info"></i>
+  <i *ngIf="tebexService.messageNotify.type=='error'" class="fa-solid fa-circle-exclamation"></i>
+  <i *ngIf="tebexService.messageNotify.type=='success'" class="fa-sharp fa-solid fa-circle-check"></i>
+  <p>{{tebexService.messageNotify.message}}</p>
+</div>
