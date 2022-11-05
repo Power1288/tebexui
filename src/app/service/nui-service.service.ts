@@ -21,6 +21,17 @@ export class NuiServiceService {
           this.tebexService.coin = data.coin
           this.tebexService.userWeapons = data.weaponsUser
           this.tebexService.userName = data.userName
+          this.tebexService.carList = []
+          this.tebexService.weaponList = []
+          data.itemShop.forEach((item:any) => {
+            if (item.type == "car") {
+              item.image = `./assets/tebex/cars/${item.model}.png`
+              this.tebexService.carList.push(item)
+            }else if (item.type == "weapon") {
+              item.image = `./assets/tebex/weapons/${item.model}.png`
+              this.tebexService.weaponList.push(item)
+            }
+          })
           this.tebex = true
           break;
         default:

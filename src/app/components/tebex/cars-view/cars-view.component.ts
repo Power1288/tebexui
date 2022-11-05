@@ -8,25 +8,18 @@ import {Subscription} from "rxjs";
   templateUrl: './cars-view.component.html',
   styleUrls: ['./cars-view.component.scss']
 })
-export class CarsViewComponent implements OnInit, OnDestroy {
+export class CarsViewComponent implements OnInit {
 
 
-  carSubscribe : Subscription | undefined
   carList : Car[] = []
 
   constructor(public tebexService:TebexService) { }
 
   ngOnInit(): void {
-    this.carSubscribe = this.tebexService.carList.subscribe({
-      next:(cars : Car[]) => {
-        this.carList = cars
-      }
-    })
+    this.carList = this.tebexService.carList
   }
 
-  ngOnDestroy(): void {
-    this.carSubscribe?.unsubscribe()
-  }
+
 
   addCar(car:Car) {
     this.tebexService.addItemToBag(car)

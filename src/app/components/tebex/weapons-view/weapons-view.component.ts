@@ -8,23 +8,15 @@ import {Subscription} from "rxjs";
   templateUrl: './weapons-view.component.html',
   styleUrls: ['./weapons-view.component.scss']
 })
-export class WeaponsViewComponent implements OnInit,OnDestroy {
+export class WeaponsViewComponent implements OnInit {
 
   constructor(public tebexService:TebexService) { }
 
-  weaponSubcribe : Subscription | undefined
   weaponList : Weapon[] = []
   ngOnInit(): void {
-    this.weaponSubcribe = this.tebexService.weaponList.subscribe({
-      next:(weaponList) => {
-        this.weaponList = weaponList
-      }
-    })
+    this.weaponList = this.tebexService.weaponList
   }
 
-  ngOnDestroy(): void {
-    this.weaponSubcribe?.unsubscribe()
-  }
 
   addWeapon(weapon : Weapon) {
     this.tebexService.addItemToBag(weapon)
