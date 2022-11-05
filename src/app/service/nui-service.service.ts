@@ -47,7 +47,6 @@ export class NuiServiceService {
   set tebex(value: boolean) {
     this._tebex = value;
     if (!value) {
-      console.log("Close")
       this.http.post("https://blackcity/boutique_close",{}).subscribe({
         next:() => {
 
