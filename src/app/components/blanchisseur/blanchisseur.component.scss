@@ -9,14 +9,22 @@
   display: grid;
   grid-template-rows: 20% 60% 20%;
 
+  @media screen and (max-width: 1280px){
+    gap: 10px;
+  }
+
   .header-blanchisseur {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 15px;
     h1 {
       text-align: center;
       font-weight: 900;
       font-family: Poppins;
+      color: white;
+    }
+    i {
       color: white;
     }
   }
@@ -43,7 +51,7 @@
         justify-self: center;
         padding: 0 10px;
         outline: none;
-        background: rgba(45, 52, 54, 0.34);
+        background: rgba(45, 52, 54, 0.44);
         color: white;
         font-family: Poppins;
         &::placeholder {
@@ -88,6 +96,9 @@
     h2 {
       color: white;
       font-family: Poppins;
+      display: flex;
+      gap: 10px;
+      align-items: center;
       span {
         padding: 10px 20px;
         background: white;

@@ -1,6 +1,7 @@
 <div class="blanchisseur">
   <div class="header-blanchisseur">
     <h1>Blanchisseur</h1>
+    <i class="fa-sharp fa-solid fa-xmark close-btn" (click)="close()"></i>
   </div>
   <div class="content-blanchisseur">
     <div class="content-header-blanchisseur">
@@ -18,6 +19,6 @@
 
   </div>
   <div class="info-blanchisseur">
-    <h2>Votre budjet <span>1000000$</span></h2>
+    <h2>Votre budjet <span>{{this.blanchiService.black_money}}$</span></h2>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {TebexService} from "./tebex.service";
 import {HttpClient} from "@angular/common/http";
+import {BlanchisseurService} from "./blanchisseur.service";
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +9,15 @@ import {HttpClient} from "@angular/common/http";
 export class NuiServiceService {
 
   private _tebex : boolean = false
-  constructor(private tebexService:TebexService,private http:HttpClient) {
+  private _blanchisseur : boolean = false
+
+  constructor(private tebexService:TebexService,private blanchiService : BlanchisseurService,private http:HttpClient) {
     this.loadNui()
   }
 
   loadNui() {
     window.addEventListener("message",(event:MessageEvent) => {
       const data = event.data
-
       switch (data.ui) {
         case "tebex":
           this.tebexService.coin = data.coin
@@ -33,6 +35,10 @@ export class NuiServiceService {
             }
           })
           this.tebex = true
+          break;
+        case "blanchisseur":
+          this.blanchiService.black_money = data.black_money
+          this.blanchisseur = true
           break;
         default:
           break
@@ -58,6 +64,13 @@ export class NuiServiceService {
     }
   }
 
+  get blanchisseur(): boolean {
+    return this._blanchisseur;
+  }
+
+  set blanchisseur(value: boolean) {
+    this._blanchisseur = value;
+  }
 
 
 
