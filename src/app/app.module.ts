@@ -12,6 +12,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {FormsModule} from "@angular/forms";
 import { NotifyComponent } from './components/tebex/notify/notify.component';
 import {HttpClientModule} from "@angular/common/http";
+import { BlanchisseurComponent } from './components/blanchisseur/blanchisseur.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
     TebexComponent,
     CarsViewComponent,
     WeaponsViewComponent,
-    NotifyComponent
+    NotifyComponent,
+    BlanchisseurComponent
   ],
   imports: [
     BrowserModule,
