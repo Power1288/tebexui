@@ -25,6 +25,7 @@ export class NuiServiceService {
           this.tebexService.userName = data.userName
           this.tebexService.carList = []
           this.tebexService.weaponList = []
+          this.tebexService.boutiqueId = data.boutiqueId
           data.itemShop.forEach((item:any) => {
             if (item.type == "car") {
               item.image = `./assets/tebex/cars/${item.model}.png`

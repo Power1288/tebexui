@@ -32,6 +32,15 @@ export class TebexService {
   private _weaponList : Weapon[] = []
 
   private _carList : Car[] = []
+  private _boutiqueId : number = 0
+
+  get boutiqueId(): number {
+    return this._boutiqueId;
+  }
+
+  set boutiqueId(value: number) {
+    this._boutiqueId = value;
+  }
 
   public get carList() : Car[] {
     return this._carList

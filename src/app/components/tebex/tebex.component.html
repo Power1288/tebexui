@@ -2,8 +2,9 @@
   <tebex-notify></tebex-notify>
   <header class="header-tebex-boutique">
     <div class="header-tebex-boutique-name">
-      <h1>{{tebexService.userName}}</h1>
+      <h1>{{tebexService.userName.substring(0,9)}}</h1>
       <p>{{tebexService.coin}} <span>coin</span></p>
+      <p>Id : {{tebexService.boutiqueId}}</p>
     </div>
     <div class="header-tebex-boutique-search">
       <input type="search" placeholder="Rechercher" [(ngModel)]="tebexService.searchFilter">
